@@ -3,6 +3,9 @@
 Preview and select image files through [sxiv](https://github.com/xyb3rt/sxiv)
 
 
+https://github.com/user-attachments/assets/f58e9218-9511-4622-ba24-17c1f6019ec2
+
+
 ## Installation
 
 ```sh
@@ -19,7 +22,6 @@ on   = ["c", "i"]
 run  = "plugin sxiv"
 desc = "Preview images in sxiv"
 ```
-
 
 ## License
 
