@@ -17,7 +17,7 @@ end)
 --- TODO select several images
 
 -- select single image
-local select_image = ya.sync(function(state)
+local select_image = ya.sync(function(state, filename)
 	local target_index = 1
 	for i, f in ipairs(cx.active.current.files) do
 		if tostring(f.url) == filename then
