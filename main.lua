@@ -68,7 +68,7 @@ return {
 			args[#args + 1] = "-n " .. hovered
 		end
 
-		local out, err = Command("nsxiv"):args(args):args(imgs):output()
+		local out, err = Command("nsxiv"):arg(args):arg(imgs):output()
 		if out.status.success == false or err ~= nil then
 			ya.dbg(err, out.stdout)
 			return
