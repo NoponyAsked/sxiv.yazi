@@ -6,6 +6,7 @@ Preview and select image files through [nsxiv](https://github.com/nsxiv/nsxiv)
 
 https://github.com/user-attachments/assets/f58e9218-9511-4622-ba24-17c1f6019ec2
 
+Also supports selecting several images.
 
 ## Installation
 
