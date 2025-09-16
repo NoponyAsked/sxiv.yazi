@@ -14,10 +14,8 @@ local list_images = ya.sync(function(state, _)
 	return images
 end)
 
---- TODO select several images
-
--- select single image
-local select_image = ya.sync(function(state, filename)
+-- select single image via moving cursor to it's position
+local hover_image = ya.sync(function(state, filename)
 	local target_index = 1
 	for i, f in ipairs(cx.active.current.files) do
 		if tostring(f.url) == filename then
@@ -28,7 +26,6 @@ local select_image = ya.sync(function(state, filename)
 	local delta = target_index - cx.active.current.cursor
 	ya.manager_emit("arrow", { delta - 1 })
 end)
-
 
 -- get a position of hovered image amongst other images to pass the value to sxiv with '-n' flag
 -- TO refactor dat son of a batch - somehow merge with list_images
@@ -79,9 +76,17 @@ return {
 		for i in string.gmatch(out.stdout, "([%S ]+)\n") do
 			selected[#selected + 1] = i
 		end
+
 		if #selected == 0 then
 			return
+		elseif #selected == 1 then
+			hover_image(selected[1])
+		else
+			ya.manager_emit("escape", { "select" })
+			for i, f in ipairs(selected) do
+				hover_image(selected[i])
+				ya.manager_emit("toggle", { state = "on" })
+			end
 		end
-		select_image(selected[1])
 	end,
 }
