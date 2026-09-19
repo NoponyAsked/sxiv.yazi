@@ -24,7 +24,7 @@ local hover_image = ya.sync(function(state, filename)
 		end
 	end
 	local delta = target_index - cx.active.current.cursor
-	ya.mgr_emit("arrow", { delta - 1 })
+	ya.emit("arrow", { delta - 1 })
 end)
 
 -- get a position of hovered image amongst other images to pass the value to sxiv with '-n' flag
@@ -82,10 +82,10 @@ return {
 		elseif #selected == 1 then
 			hover_image(selected[1])
 		else
-			ya.mgr_emit("escape", { "select" })
+			ya.emit("escape", { "select" })
 			for i, f in ipairs(selected) do
 				hover_image(selected[i])
-				ya.mgr_emit("toggle", { state = "on" })
+				ya.emit("toggle", { state = "on" })
 			end
 		end
 	end,
